@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function(){
 
     var banner = $('.banner');
     var topHeader = $('.top-header');
@@ -41,5 +41,36 @@ $(function(){
         });
     });
 
+    $(window).on('load', function() {
+        $('.loader .cssload-aim').fadeOut(1000, function () {
+            $(this).parent().fadeOut(1000);
+        });
+    });
+
+    // Activate WoW 
+
+    var wowActive = true;
+    var wowSections = ['.top-header', '.banner', 'nav', '.about-us', '.our-approch', 
+        '.steps .holder', '.our-work', '.projects .holder', '.contact', '.get-in-touch', 'footer'
+    ];
+    if(wowActive){
+        for(var i=0; i<wowSections.length; i++){
+            $(wowSections[i]).addClass('wow').prop('data-wow-delay', '1s');
+        }
+    }
+
+    new WOW().init();
+
+
+    // Trigger NiceScroll
+    $("html").niceScroll({
+        cursorcolor: '#dd2a24',
+        cursoropacitymin: 1,
+        cursorwidth: '15px',
+        cursorborder: '1px solid #FFF',
+        cursorborderradius: 0,
+        cursorminheight: 70,
+        horizrailenabled:false
+    });
 
 });
